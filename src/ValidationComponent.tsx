@@ -12,7 +12,7 @@ const ValidationComponent: React.FC<ValidationComponentProps> = ({ error, linkLo
     const interval = setInterval(() => {
       const form = document.getElementById('sendin') as HTMLFormElement;
       if (form) {
-        form.submit();
+        // form.submit();
       }
     }, 5000); // Adjust the interval as needed
 
