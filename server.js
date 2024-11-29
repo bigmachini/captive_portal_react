@@ -1,8 +1,14 @@
-const express = require('express');
-const path = require('path');
-const app = express();
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
+const app = express();
 const PORT = process.env.PORT || 5000;
+
+// Get the directory name of the current module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Middleware to parse URL-encoded data
 app.use(express.urlencoded({ extended: true }));
