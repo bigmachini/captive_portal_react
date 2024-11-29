@@ -42,7 +42,14 @@ function App() {
           if (data.status) {
             setIsValidating(true);
           } else {
-            setError(data.message);
+            fetch(`/api/user/packages/${PARTNER_ID}`)
+              .then(response => response.json())
+              .then(data => {
+                if (data.status) {
+                  setPackages(data.data);
+                }
+              })
+              .catch(error => console.error('Error fetching packages:', error));
           }
         })
         .catch(error => {
@@ -53,7 +60,7 @@ function App() {
 
   useEffect(() => {
     if (!isValidating && appData.mac) {
-      fetch('/api/user/packages/7')
+      fetch(`/api/user/packages/${PARTNER_ID}`)
         .then(response => response.json())
         .then(data => {
           if (data.status) {
