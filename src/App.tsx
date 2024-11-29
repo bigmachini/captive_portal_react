@@ -28,13 +28,15 @@ function App() {
     if (mac && ip && link_login && link_login_only) {
       setAppData({ mac, ip, link_login, link_login_only, error: error || '' });
     } else {
-      setError('You are not in the hotspot network at the moment.');
+      setError('You are not in the hotspot network at the moment!');
       setIsValidating(false);
     }
   }, []);
 
   useEffect(() => {
     if (appData.mac) {
+      console.info('Mac Address fetching validation status:', appData.mac);
+
       fetch(`/api/user/${appData.mac}`)
         .then(response => response.json())
         .then(data => {
