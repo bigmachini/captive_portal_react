@@ -27,14 +27,13 @@ app.post('/handle-form', (req, res) => {
     const queryParams = new URLSearchParams({ mac, ip, username, link_login, link_login_only, link_orig, error }).toString();
     console.log(`Server is calling handle-form with ${queryParams}`);
 
-  res.redirect(`/?${queryParams}`);
+  res.redirect(`https://hotspot.kredoh.co.ke/?${queryParams}`);
 });
 
 // Handle all other routes by serving the index.html file
 app.get('*', (req, res) => {
     console.log("Server is calling *");
-
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 app.listen(PORT, () => {
