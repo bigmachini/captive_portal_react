@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react';
 
 
 export default defineConfig({
-  logLevel: 'error',
   plugins: [react()],
   server: {
     proxy: {
@@ -14,4 +13,8 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    outDir: 'dist', // Ensure this matches your Nginx root directory
+  },
+  logLevel: 'error',
 });
