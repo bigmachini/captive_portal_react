@@ -7,7 +7,7 @@ const PARTNER_ID = '7'; // Replace with your actual partner ID
 
 function App() {
   const [packages, setPackages] = useState([]);
-  const [isValidating, setIsValidating] = useState(true);
+  const [isValidating, setIsValidating] = useState(false);
   const [error, setError] = useState('');
   const [appData, setAppData] = useState({
     mac: '',
@@ -29,7 +29,6 @@ function App() {
       setAppData({ mac, ip, link_login, link_login_only, error: error || '' });
     } else {
       setError('You are not in the hotspot network at the moment!');
-      setIsValidating(false);
     }
   }, []);
 
@@ -43,13 +42,11 @@ function App() {
           if (data.status) {
             setIsValidating(true);
           } else {
-            setIsValidating(false);
             setError(data.message);
           }
         })
         .catch(error => {
           console.error('Error fetching validation status:', error);
-          setIsValidating(false);
         });
     }
   }, [appData.mac]);
