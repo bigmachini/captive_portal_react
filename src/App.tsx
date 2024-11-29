@@ -21,8 +21,8 @@ function App() {
     const params = new URLSearchParams(window.location.search);
     const mac = params.get('mac');
     const ip = params.get('ip');
-    const link_login = params.get('link-login');
-    const link_login_only = params.get('link-login-only');
+    const link_login = params.get('link_login');
+    const link_login_only = params.get('link_login_only');
     const error = params.get('error');
 
     if (mac && ip && link_login && link_login_only) {
