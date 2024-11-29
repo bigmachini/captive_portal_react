@@ -18,13 +18,18 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 // Endpoint to handle form data
 app.post('/handle-form', (req, res) => {
+
   const { mac, ip, username, link_login, link_login_only, link_orig, error } = req.body;
   const queryParams = new URLSearchParams({ mac, ip, username, link_login, link_login_only, link_orig, error }).toString();
+  console.log(`Server is calling handle-form with ${queryParams}`);
+
   res.redirect(`/?${queryParams}`);
 });
 
 // Handle all other routes by serving the index.html file
 app.get('*', (req, res) => {
+    console.log("Server is calling *");
+
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
