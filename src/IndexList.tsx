@@ -22,7 +22,7 @@ interface IndexListProps {
   onSubscribe: (phone: string, packageId: number) => void;
 }
 
-const IndexList: React.FC<IndexListProps> = ({ businessName, packages, appData, onSubscribe }) => {
+const IndexList: React.FC<IndexListProps> = ({ businessName, packages, onSubscribe }) => {
   const [formData, setFormData] = useState<{ [key: number]: { phone: string } }>({});
 
   useEffect(() => {
